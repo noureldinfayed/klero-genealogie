@@ -3,39 +3,34 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Logo from '@/components/ui/Logo'
 import { useScrollDirection } from '@/hooks/useScrollDirection'
 import { cn } from '@/lib/utils'
 
-const SCROLL_THRESHOLD = 60 // px before navbar becomes opaque
+const SCROLL_THRESHOLD = 40
 
-// ─── PLACEHOLDER DATA ─────────────────────────────────────────────────────
-// Replace with real nav links and logo component per project.
 const NAV_LINKS = [
-  { label: 'Home', href: '#' },
-  { label: 'Services', href: '#services' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Comment ça marche', href: '#process' },
+  { label: 'Pourquoi Klero', href: '#why' },
+  { label: 'Témoignages', href: '#testimonials' },
+  { label: 'FAQ', href: '#faq' },
 ]
 
-// ─── NAVBAR ───────────────────────────────────────────────────────────────
 export default function Navbar() {
-  const { direction, scrollY } = useScrollDirection({ threshold: 10 })
+  const { scrollY } = useScrollDirection({ threshold: 10 })
   const [menuOpen, setMenuOpen] = useState(false)
   const isScrolled = scrollY > SCROLL_THRESHOLD
 
-  // Hide on scroll down (after threshold), show on scroll up
-  const isHidden = direction === 'down' && scrollY > SCROLL_THRESHOLD + 80
-
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    return () => {
+      document.body.style.overflow = ''
+    }
   }, [menuOpen])
 
-  // Close menu on resize to desktop
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth >= 768) setMenuOpen(false)
+      if (window.innerWidth >= 1024) setMenuOpen(false)
     }
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
@@ -43,91 +38,80 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.header
-        animate={{ y: isHidden ? '-100%' : '0%' }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
+      <header
         className={cn(
-          'fixed top-0 inset-x-0 z-50 transition-all duration-300',
+          'fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-smooth',
           isScrolled
-            ? 'bg-background/95 backdrop-blur-sm shadow-sm'
-            : 'bg-transparent'
+            ? 'bg-background/95 backdrop-blur-md shadow-[0_1px_0_rgba(11,45,85,0.08)]'
+            : 'bg-background/80 backdrop-blur-sm'
         )}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
-
-            {/* ── LOGO SLOT ─────────────────────────────────────────────── */}
+        <div className="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+          <div className="flex items-center justify-between h-20">
             <a
-              href="/"
-              className="flex items-center gap-2 flex-shrink-0"
-              aria-label="Go to homepage"
+              href="#top"
+              className="flex-shrink-0"
+              aria-label="Klero Généalogie — Accueil"
             >
-              {/* Replace with <Image> logo or SVG component */}
-              <span className="font-display font-bold text-xl text-primary tracking-tight">
-                [LOGO]
-              </span>
+              <Logo />
             </a>
 
-            {/* ── DESKTOP NAV LINKS ─────────────────────────────────────── */}
             <nav
-              className="hidden md:flex items-center gap-8"
-              aria-label="Main navigation"
+              className="hidden lg:flex items-center gap-9"
+              aria-label="Navigation principale"
             >
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-200"
+                  className="text-[14px] font-medium text-foreground/80 hover:text-primary transition-colors duration-200"
                 >
                   {link.label}
                 </a>
               ))}
 
-              {/* ── CTA BUTTON SLOT ─────────────────────────────────────── */}
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center h-10 px-5 rounded-full bg-primary text-secondary text-sm font-semibold hover:opacity-90 transition-opacity duration-200"
+                className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-primary text-secondary text-[14px] font-semibold shadow-soft hover:-translate-y-0.5 hover:opacity-95 transition-all duration-200"
               >
-                Get in Touch
+                Nous contacter
               </a>
             </nav>
 
-            {/* ── MOBILE HAMBURGER ──────────────────────────────────────── */}
             <button
-              className="md:hidden flex items-center justify-center w-11 h-11 rounded-md text-foreground hover:text-primary transition-colors"
+              className="lg:hidden flex items-center justify-center w-11 h-11 rounded-md text-foreground hover:text-primary transition-colors"
               onClick={() => setMenuOpen((v) => !v)}
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
               aria-expanded={menuOpen}
             >
-              {menuOpen ? <X size={22} /> : <Menu size={22} />}
+              {menuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
-      {/* ── MOBILE FULL-SCREEN OVERLAY ────────────────────────────────────── */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             key="mobile-menu"
-            initial={{ opacity: 0, y: -16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed inset-0 z-40 bg-background flex flex-col items-center justify-center gap-8 md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-background pt-20 lg:hidden"
           >
             <nav
-              className="flex flex-col items-center gap-6"
-              aria-label="Mobile navigation"
+              className="flex flex-col px-6 py-8 gap-2"
+              aria-label="Navigation mobile"
             >
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.06, duration: 0.2 }}
-                  className="text-2xl font-display font-semibold text-foreground hover:text-primary transition-colors"
+                  transition={{ delay: i * 0.05, duration: 0.25 }}
+                  className="py-4 border-b border-border text-lg font-medium text-foreground hover:text-primary transition-colors"
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
@@ -136,13 +120,13 @@ export default function Navbar() {
 
               <motion.a
                 href="#contact"
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: NAV_LINKS.length * 0.06, duration: 0.2 }}
-                className="mt-4 inline-flex items-center justify-center h-12 px-8 rounded-full bg-primary text-secondary text-base font-semibold hover:opacity-90 transition-opacity"
+                transition={{ delay: NAV_LINKS.length * 0.05, duration: 0.25 }}
+                className="mt-6 inline-flex items-center justify-center py-4 rounded-lg bg-primary text-secondary text-base font-semibold shadow-soft"
                 onClick={() => setMenuOpen(false)}
               >
-                Get in Touch
+                Nous contacter
               </motion.a>
             </nav>
           </motion.div>

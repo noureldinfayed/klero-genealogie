@@ -10,27 +10,37 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: '#f4efe6',
-        'paper-2': '#ebe4d5',
-        cream: '#faf6ee',
-        ink: '#1a1612',
-        'ink-soft': '#3a332b',
-        'ink-muted': '#6b6056',
-        rule: '#c9bfae',
-        accent: '#7a1f1f',
-        gold: '#a8884a',
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+        accent: 'var(--color-accent)',
+        background: 'var(--color-background)',
+        surface: 'var(--color-surface)',
+        border: 'var(--color-border)',
+        foreground: 'var(--color-text)',
+        muted: 'var(--color-muted)',
       },
       fontFamily: {
-        serif: ['var(--font-cormorant)', 'Georgia', 'serif'],
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        mono: ['var(--font-jetbrains)', 'ui-monospace', 'monospace'],
+        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
+        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
       },
-      screens: {
-        kl: '901px',
+      maxWidth: {
+        container: '1200px',
+      },
+      boxShadow: {
+        soft: '0 1px 2px rgba(11, 45, 85, 0.04), 0 8px 24px rgba(11, 45, 85, 0.06)',
+        'soft-lg': '0 2px 4px rgba(11, 45, 85, 0.06), 0 16px 40px rgba(11, 45, 85, 0.08)',
       },
       transitionTimingFunction: {
         smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
-        reveal: 'cubic-bezier(.2,.7,.3,1)',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
+        },
+      },
+      animation: {
+        float: 'float 6s ease-in-out infinite',
       },
     },
   },

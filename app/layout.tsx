@@ -1,48 +1,32 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
-import { Cormorant_Garamond, Inter, JetBrains_Mono } from 'next/font/google'
+import { Inter } from 'next/font/google'
+import LenisProvider from '@/components/ui/LenisProvider'
 import './globals.css'
-
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
-  display: 'swap',
-})
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
   variable: '--font-inter',
   display: 'swap',
 })
 
-const jetbrains = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-jetbrains',
-  display: 'swap',
-})
-
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-
 export const metadata: Metadata = {
   title: {
-    default: "Klero Généalogie — L'Archive",
+    default: 'Klero Généalogie — Cabinet de généalogie successorale',
     template: '%s | Klero Généalogie',
   },
   description:
-    "Depuis quarante ans, Klero retrouve les successions oubliées des familles françaises — avec la rigueur du notariat, la patience de l'archiviste.",
-  metadataBase: new URL(SITE_URL),
+    'Klero Généalogie identifie et récupère les héritages non transmis lors des successions, en collaboration avec les notaires. Aucun frais sans résultat.',
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  ),
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
     siteName: 'Klero Généalogie',
-    title: "Klero Généalogie — L'Archive",
+    title: 'Klero Généalogie — Cabinet de généalogie successorale',
     description:
-      "Généalogie successorale française. Un héritage vous attend.",
+      'Nous identifions et récupérons les actifs non transmis lors des successions, en collaboration avec les notaires.',
   },
   twitter: {
     card: 'summary_large_image',
@@ -59,12 +43,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="fr"
-      className={`${cormorant.variable} ${inter.variable} ${jetbrains.variable} antialiased`}
-    >
-      <body className="font-sans bg-paper text-ink">
-        {children}
+    <html lang="fr" className={`${inter.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-background text-foreground font-body">
+        <LenisProvider>{children}</LenisProvider>
         <Analytics />
       </body>
     </html>

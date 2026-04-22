@@ -1,128 +1,128 @@
-import { Phone, Mail, ExternalLink } from 'lucide-react'
-import type { SocialLink } from '@/lib/types'
+import { Mail, Phone, MapPin } from 'lucide-react'
+import Logo from '@/components/ui/Logo'
 
-// ─── PLACEHOLDER DATA ─────────────────────────────────────────────────────
-// Replace with real data from environment variables or CMS per project.
-const BUSINESS_NAME = process.env.NEXT_PUBLIC_BUSINESS_NAME ?? '[Business Name]'
-const TAGLINE = '[Your professional tagline goes here]'
-const CONTACT_EMAIL = process.env.NEXT_PUBLIC_BUSINESS_EMAIL ?? '[email@domain.com]'
-const CONTACT_PHONE = process.env.NEXT_PUBLIC_BUSINESS_PHONE ?? '[+XX XXX XXX XXXX]'
+function LinkedInIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+    </svg>
+  )
+}
 
-// Social links — add per project.
-// Note: lucide-react v1+ removed brand icons. Use SVG icons from
-// simple-icons or inline SVGs for brand-specific social icons.
-const SOCIAL_LINKS: SocialLink[] = [
-  // { platform: 'instagram', href: 'https://instagram.com/...', label: 'Instagram' },
-  // { platform: 'facebook',  href: 'https://facebook.com/...',  label: 'Facebook'  },
-  // { platform: 'linkedin',  href: 'https://linkedin.com/...',  label: 'LinkedIn'  },
+const NAV_LINKS = [
+  { label: 'Comment ça marche', href: '#process' },
+  { label: 'Pourquoi Klero', href: '#why' },
+  { label: 'Témoignages', href: '#testimonials' },
+  { label: 'FAQ', href: '#faq' },
 ]
 
-// ─── FOOTER ──────────────────────────────────────────────────────────────
+const LEGAL_LINKS = [
+  { label: 'Mentions légales', href: '#' },
+  { label: 'Politique de confidentialité', href: '#' },
+  { label: 'CGU', href: '#' },
+  { label: 'RGPD', href: '#' },
+]
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-foreground text-secondary">
-      {/* ── MAIN FOOTER CONTENT ─────────────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-
-          {/* ── BRAND COLUMN ─────────────────────────────────────────────── */}
-          <div className="flex flex-col gap-4">
-            {/* LOGO / BUSINESS NAME SLOT */}
-            <span className="font-display font-bold text-2xl text-secondary">
-              {BUSINESS_NAME}
-            </span>
-
-            {/* TAGLINE SLOT */}
-            <p className="text-sm text-secondary/70 leading-relaxed max-w-xs">
-              {TAGLINE}
+    <footer className="bg-primary text-secondary">
+      <div className="max-w-container mx-auto px-5 sm:px-8 lg:px-10 py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+          {/* Brand column */}
+          <div className="md:col-span-5 flex flex-col gap-5">
+            <Logo variant="light" />
+            <p className="text-sm text-secondary/70 leading-relaxed max-w-sm">
+              Cabinet de généalogie successorale. Nous identifions et récupérons
+              les actifs non transmis lors des successions, en collaboration
+              avec les notaires.
             </p>
 
-            {/* SOCIAL LINKS SLOT ──────────────────────────────────────────
-              Replace ExternalLink with brand SVG icons per project.
-              Example with simple-icons:
-                import { siInstagram } from 'simple-icons'
-                <svg ... dangerouslySetInnerHTML={{ __html: siInstagram.svg }} />
-            ──────────────────────────────────────────────────────────── */}
-            {SOCIAL_LINKS.length > 0 && (
-              <div className="flex items-center gap-3 mt-2">
-                {SOCIAL_LINKS.map((link) => (
-                  <a
-                    key={link.platform}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={link.label}
-                    className="flex items-center justify-center w-9 h-9 rounded-full border border-secondary/30 text-secondary/70 hover:text-secondary hover:border-secondary transition-colors duration-200"
-                  >
-                    {/* Replace with brand SVG icon per project */}
-                    <ExternalLink size={14} />
-                  </a>
-                ))}
-              </div>
-            )}
+            <div className="flex items-center gap-3 mt-2">
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="flex items-center justify-center w-10 h-10 rounded-lg border border-secondary/25 text-secondary/80 hover:bg-secondary hover:text-primary hover:border-secondary transition-colors duration-200"
+              >
+                <LinkedInIcon size={16} />
+              </a>
+            </div>
           </div>
 
-          {/* ── NAV LINKS SLOT ───────────────────────────────────────────── */}
-          <div className="flex flex-col gap-3">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-secondary/50 mb-1">
+          {/* Nav column */}
+          <div className="md:col-span-3 flex flex-col gap-3">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-secondary/50 mb-2">
               Navigation
             </h3>
-            {/* Replace with real links per project */}
-            {['Home', 'Services', 'About', 'Contact'].map((item) => (
+            {NAV_LINKS.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-sm text-secondary/70 hover:text-secondary transition-colors duration-200"
+                key={item.label}
+                href={item.href}
+                className="text-sm text-secondary/75 hover:text-secondary transition-colors duration-200 w-fit"
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </div>
 
-          {/* ── CONTACT INFO SLOT ────────────────────────────────────────── */}
-          <div className="flex flex-col gap-3">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-secondary/50 mb-1">
+          {/* Contact column */}
+          <div className="md:col-span-4 flex flex-col gap-3">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-secondary/50 mb-2">
               Contact
             </h3>
 
             <a
-              href={`mailto:${CONTACT_EMAIL}`}
-              className="flex items-center gap-2 text-sm text-secondary/70 hover:text-secondary transition-colors duration-200"
+              href="mailto:contact@klero-genealogie.fr"
+              className="flex items-center gap-2.5 text-sm text-secondary/75 hover:text-secondary transition-colors duration-200 w-fit"
             >
-              <Mail size={14} className="flex-shrink-0" />
-              {CONTACT_EMAIL}
+              <Mail size={15} className="flex-shrink-0" />
+              contact@klero-genealogie.fr
             </a>
 
             <a
-              href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`}
-              className="flex items-center gap-2 text-sm text-secondary/70 hover:text-secondary transition-colors duration-200"
+              href="tel:+33100000000"
+              className="flex items-center gap-2.5 text-sm text-secondary/75 hover:text-secondary transition-colors duration-200 w-fit"
             >
-              <Phone size={14} className="flex-shrink-0" />
-              {CONTACT_PHONE}
+              <Phone size={15} className="flex-shrink-0" />
+              +33 1 00 00 00 00
             </a>
 
-            {/* ADDRESS SLOT — uncomment and fill per project */}
-            {/* <p className="flex items-start gap-2 text-sm text-secondary/70">
-              <MapPin size={14} className="flex-shrink-0 mt-0.5" />
-              [Street Address, City, Country]
-            </p> */}
+            <p className="flex items-start gap-2.5 text-sm text-secondary/75 leading-relaxed">
+              <MapPin size={15} className="flex-shrink-0 mt-0.5" />
+              <span>
+                Paris, France
+                <br />
+                Cabinet sur rendez-vous uniquement
+              </span>
+            </p>
           </div>
         </div>
       </div>
 
-      {/* ── BOTTOM BAR ───────────────────────────────────────────────────── */}
       <div className="border-t border-secondary/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-secondary/40">
-          <span>
-            © {currentYear} {BUSINESS_NAME}. All rights reserved.
+        <div className="max-w-container mx-auto px-5 sm:px-8 lg:px-10 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <span className="text-xs text-secondary/55">
+            © {currentYear} Klero Généalogie. Tous droits réservés.
           </span>
 
-          {/* ── FI STAMP — NON-NEGOTIABLE, DO NOT REMOVE ─────────────────── */}
-          <span className="font-medium tracking-wide">
-            Architected &amp; Engineered by Fayed Intelligence
-          </span>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {LEGAL_LINKS.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                className="text-xs text-secondary/55 hover:text-secondary transition-colors"
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
