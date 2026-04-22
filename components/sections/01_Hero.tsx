@@ -30,7 +30,7 @@ export default function Hero() {
       />
 
       <div className="relative w-full max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32 pt-28 md:pt-32 pb-28 md:pb-40">
-        <div className="max-w-2xl lg:max-w-3xl animate-[rise_0.8s_cubic-bezier(0.25,0.1,0.25,1)_both]">
+        <div className="max-w-2xl lg:max-w-3xl">
           <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary/70 border border-secondary/25 rounded-full px-3.5 py-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-secondary/80" />
             Cabinet de généalogie successorale
