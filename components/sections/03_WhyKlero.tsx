@@ -32,8 +32,8 @@ const BLOCKS = [
 
 export default function WhyKlero() {
   return (
-    <section id="why" className="bg-surface py-20 md:py-28">
-      <div className="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+    <section id="why" className="bg-surface py-20 md:py-28 border-t border-border">
+      <div className="max-w-container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ export default function WhyKlero() {
           </p>
         </motion.div>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
           {BLOCKS.map((block, i) => {
             const Icon = block.icon
             return (
@@ -63,7 +63,7 @@ export default function WhyKlero() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.55, delay: i * 0.08 }}
-                className="bg-background rounded-lg p-7 md:p-8 border border-border/70 hover:shadow-soft transition-shadow duration-300"
+                className="bg-background rounded-lg p-7 md:p-8 border border-border shadow-soft hover:shadow-soft-lg transition-shadow duration-300"
               >
                 <div className="flex items-start gap-5">
                   <div className="flex items-center justify-center w-12 h-12 rounded-md bg-primary/8 text-primary flex-shrink-0">

@@ -34,7 +34,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-primary text-secondary">
-      <div className="max-w-container mx-auto px-5 sm:px-8 lg:px-10 py-16 md:py-20">
+      <div className="max-w-container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           {/* Brand column */}
           <div className="md:col-span-5 flex flex-col gap-5">
@@ -107,7 +107,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-secondary/10">
-        <div className="max-w-container mx-auto px-5 sm:px-8 lg:px-10 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="max-w-container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <span className="text-xs text-secondary/55">
             © {currentYear} Klero Généalogie. Tous droits réservés.
           </span>

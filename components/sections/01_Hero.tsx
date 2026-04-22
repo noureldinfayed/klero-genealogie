@@ -39,8 +39,8 @@ export default function Hero() {
         <rect width="100%" height="100%" fill="url(#net)" />
       </svg>
 
-      <div className="relative max-w-container mx-auto px-5 sm:px-8 lg:px-10 pt-32 md:pt-36 pb-20 md:pb-28">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+      <div className="relative max-w-container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 pt-32 md:pt-36 pb-20 md:pb-28">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           {/* Text column */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

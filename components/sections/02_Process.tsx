@@ -29,8 +29,8 @@ const STEPS = [
 
 export default function Process() {
   return (
-    <section id="process" className="bg-background py-20 md:py-28">
-      <div className="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+    <section id="process" className="bg-background py-20 md:py-28 border-t border-border">
+      <div className="max-w-container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ export default function Process() {
           </p>
         </motion.div>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
           {STEPS.map((step, i) => {
             const Icon = step.icon
             return (
@@ -64,7 +64,7 @@ export default function Process() {
                   delay: i * 0.1,
                   ease: [0.25, 0.1, 0.25, 1],
                 }}
-                className="group relative bg-surface rounded-lg p-7 md:p-8 border border-border/60 hover:border-accent/40 hover:shadow-soft transition-all duration-300"
+                className="group relative bg-surface rounded-lg p-7 md:p-8 border border-border hover:border-accent/50 hover:shadow-soft transition-all duration-300"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center justify-center w-12 h-12 rounded-md bg-primary text-secondary">

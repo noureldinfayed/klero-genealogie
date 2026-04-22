@@ -26,8 +26,8 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="bg-background py-20 md:py-28">
-      <div className="max-w-container mx-auto px-5 sm:px-8 lg:px-10">
+    <section id="testimonials" className="bg-background py-20 md:py-28 border-t border-border">
+      <div className="max-w-container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -43,7 +43,7 @@ export default function Testimonials() {
           </h2>
         </motion.div>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
           {TESTIMONIALS.map((t, i) => (
             <motion.figure
               key={t.name}
@@ -51,7 +51,7 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.55, delay: i * 0.1 }}
-              className="relative bg-surface rounded-lg p-7 md:p-8 border border-border/60 flex flex-col"
+              className="relative bg-surface rounded-lg p-7 md:p-8 border border-border shadow-soft flex flex-col"
             >
               <Quote
                 size={28}
