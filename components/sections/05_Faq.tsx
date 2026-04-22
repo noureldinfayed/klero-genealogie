@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { Plus } from 'lucide-react'
 
 const FAQS = [
@@ -34,7 +34,7 @@ export default function Faq() {
     <section id="faq" className="bg-surface py-28 md:py-40 border-t border-border">
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
@@ -57,7 +57,7 @@ export default function Faq() {
             >
               Une autre question&nbsp;? Écrivez-nous →
             </a>
-          </motion.div>
+          </m.div>
 
           <div className="lg:col-span-7">
             <ul className="divide-y divide-border border-y border-border">
@@ -74,17 +74,17 @@ export default function Faq() {
                       <span className="text-[16px] md:text-[17px] font-semibold text-foreground pr-4 group-hover:text-primary transition-colors">
                         {faq.question}
                       </span>
-                      <motion.span
+                      <m.span
                         animate={{ rotate: isOpen ? 45 : 0 }}
                         transition={{ duration: 0.25 }}
                         className="flex items-center justify-center w-8 h-8 rounded-md border border-border text-primary flex-shrink-0 mt-0.5"
                       >
                         <Plus size={16} strokeWidth={2} />
-                      </motion.span>
+                      </m.span>
                     </button>
                     <AnimatePresence initial={false}>
                       {isOpen && (
-                        <motion.div
+                        <m.div
                           key="content"
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
@@ -95,7 +95,7 @@ export default function Faq() {
                           <p className="pb-6 pr-12 text-[15px] leading-relaxed text-muted">
                             {faq.answer}
                           </p>
-                        </motion.div>
+                        </m.div>
                       )}
                     </AnimatePresence>
                   </li>

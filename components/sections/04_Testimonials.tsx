@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Quote } from 'lucide-react'
 
 const TESTIMONIALS = [
@@ -28,7 +28,7 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="bg-background py-28 md:py-40 border-t border-border">
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -41,11 +41,11 @@ export default function Testimonials() {
           <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight leading-tight">
             Ce que disent les héritiers que nous accompagnons
           </h2>
-        </motion.div>
+        </m.div>
 
         <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
           {TESTIMONIALS.map((t, i) => (
-            <motion.figure
+            <m.figure
               key={t.name}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ export default function Testimonials() {
                 </div>
                 <div className="text-xs text-muted mt-0.5">{t.location}</div>
               </figcaption>
-            </motion.figure>
+            </m.figure>
           ))}
         </div>
       </div>

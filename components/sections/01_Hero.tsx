@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { ShieldCheck, Users, Scale } from 'lucide-react'
 
 const TRUST_POINTS = [
@@ -36,13 +36,13 @@ export default function Hero() {
       />
 
       <div className="relative w-full max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32 pt-28 md:pt-32 pb-28 md:pb-40">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           className="max-w-2xl lg:max-w-3xl"
         >
-          <motion.span
+          <m.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -50,7 +50,7 @@ export default function Hero() {
           >
             <span className="w-1.5 h-1.5 rounded-full bg-secondary/80" />
             Cabinet de généalogie successorale
-          </motion.span>
+          </m.span>
 
           <h1 className="mt-7 text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-semibold leading-[1.05] tracking-tight text-secondary">
             Retrouver un{' '}
@@ -94,7 +94,7 @@ export default function Hero() {
               </li>
             ))}
           </ul>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Bottom seam to next section */}

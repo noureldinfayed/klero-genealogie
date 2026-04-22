@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { Search, FileSearch, HandCoins } from 'lucide-react'
 
 const STEPS = [
@@ -31,7 +31,7 @@ export default function Process() {
   return (
     <section id="process" className="bg-background py-28 md:py-40 border-t border-border">
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -48,13 +48,13 @@ export default function Process() {
             Un processus rigoureux, transparent et encadré, du premier contact
             jusqu'à la restitution des actifs.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
           {STEPS.map((step, i) => {
             const Icon = step.icon
             return (
-              <motion.div
+              <m.div
                 key={step.number}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export default function Process() {
                 <p className="mt-3 text-[15px] leading-relaxed text-muted">
                   {step.description}
                 </p>
-              </motion.div>
+              </m.div>
             )
           })}
         </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Logo from '@/components/ui/Logo'
 import { useScrollDirection } from '@/hooks/useScrollDirection'
@@ -92,7 +92,7 @@ export default function Navbar() {
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
+          <m.div
             key="mobile-menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -105,7 +105,7 @@ export default function Navbar() {
               aria-label="Navigation mobile"
             >
               {NAV_LINKS.map((link, i) => (
-                <motion.a
+                <m.a
                   key={link.label}
                   href={link.href}
                   initial={{ opacity: 0, y: 8 }}
@@ -115,10 +115,10 @@ export default function Navbar() {
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}
-                </motion.a>
+                </m.a>
               ))}
 
-              <motion.a
+              <m.a
                 href="#contact"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -127,9 +127,9 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
               >
                 Nous contacter
-              </motion.a>
+              </m.a>
             </nav>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </>

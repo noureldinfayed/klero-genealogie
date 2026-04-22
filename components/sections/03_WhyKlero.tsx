@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { m } from 'framer-motion'
 import { CircleDollarSign, Gavel, BookOpen, Lock } from 'lucide-react'
 
 const BLOCKS = [
@@ -34,7 +34,7 @@ export default function WhyKlero() {
   return (
     <section id="why" className="bg-surface py-28 md:py-40 border-t border-border">
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -51,13 +51,13 @@ export default function WhyKlero() {
             Quatre engagements concrets qui font de Klero un partenaire de
             confiance pour les successions complexes.
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
           {BLOCKS.map((block, i) => {
             const Icon = block.icon
             return (
-              <motion.div
+              <m.div
                 key={block.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +78,7 @@ export default function WhyKlero() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             )
           })}
         </div>
