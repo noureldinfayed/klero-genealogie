@@ -1,7 +1,4 @@
-'use client'
-
 import Image from 'next/image'
-import { m } from 'framer-motion'
 import { ShieldCheck, Users, Scale } from 'lucide-react'
 
 const TRUST_POINTS = [
@@ -16,8 +13,6 @@ export default function Hero() {
       id="top"
       className="relative overflow-hidden bg-primary text-secondary min-h-[92vh] flex items-center"
     >
-      {/* Full-bleed hero background — documents occupy the right half of the
-          image, empty navy/star field on the left hosts the text. */}
       <div aria-hidden="true" className="absolute inset-0">
         <Image
           src="/images/ui/hero-background.webp"
@@ -29,28 +24,17 @@ export default function Hero() {
         />
       </div>
 
-      {/* Left-side gradient so text stays readable over the image */}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-transparent"
       />
 
       <div className="relative w-full max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32 pt-28 md:pt-32 pb-28 md:pb-40">
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-          className="max-w-2xl lg:max-w-3xl"
-        >
-          <m.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary/70 border border-secondary/25 rounded-full px-3.5 py-1.5"
-          >
+        <div className="max-w-2xl lg:max-w-3xl animate-[rise_0.8s_cubic-bezier(0.25,0.1,0.25,1)_both]">
+          <span className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-secondary/70 border border-secondary/25 rounded-full px-3.5 py-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-secondary/80" />
             Cabinet de généalogie successorale
-          </m.span>
+          </span>
 
           <h1 className="mt-7 text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-semibold leading-[1.05] tracking-tight text-secondary">
             Retrouver un{' '}
@@ -80,7 +64,6 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Trust points */}
           <ul className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 border-t border-secondary/20 pt-8 max-w-2xl">
             {TRUST_POINTS.map(({ icon: Icon, label }) => (
               <li
@@ -94,10 +77,9 @@ export default function Hero() {
               </li>
             ))}
           </ul>
-        </m.div>
+        </div>
       </div>
 
-      {/* Bottom seam to next section */}
       <div className="absolute bottom-0 inset-x-0 h-px bg-secondary/10" />
     </section>
   )

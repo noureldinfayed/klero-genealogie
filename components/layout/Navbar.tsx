@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { m, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Logo from '@/components/ui/Logo'
 import { useScrollDirection } from '@/hooks/useScrollDirection'
@@ -90,48 +89,37 @@ export default function Navbar() {
         </div>
       </header>
 
-      <AnimatePresence>
-        {menuOpen && (
-          <m.div
-            key="mobile-menu"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-background pt-20 lg:hidden"
-          >
-            <nav
-              className="flex flex-col px-6 py-8 gap-2"
-              aria-label="Navigation mobile"
-            >
-              {NAV_LINKS.map((link, i) => (
-                <m.a
-                  key={link.label}
-                  href={link.href}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.25 }}
-                  className="py-4 border-b border-border text-lg font-medium text-foreground hover:text-primary transition-colors"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {link.label}
-                </m.a>
-              ))}
-
-              <m.a
-                href="#contact"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: NAV_LINKS.length * 0.05, duration: 0.25 }}
-                className="mt-6 inline-flex items-center justify-center py-4 rounded-lg bg-primary text-secondary text-base font-semibold shadow-soft"
-                onClick={() => setMenuOpen(false)}
-              >
-                Nous contacter
-              </m.a>
-            </nav>
-          </m.div>
+      <div
+        className={cn(
+          'fixed inset-0 z-40 bg-background pt-20 lg:hidden transition-opacity duration-200',
+          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         )}
-      </AnimatePresence>
+        aria-hidden={!menuOpen}
+      >
+        <nav
+          className="flex flex-col px-6 py-8 gap-2"
+          aria-label="Navigation mobile"
+        >
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="py-4 border-b border-border text-lg font-medium text-foreground hover:text-primary transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
+
+          <a
+            href="#contact"
+            className="mt-6 inline-flex items-center justify-center py-4 rounded-lg bg-primary text-secondary text-base font-semibold shadow-soft"
+            onClick={() => setMenuOpen(false)}
+          >
+            Nous contacter
+          </a>
+        </nav>
+      </div>
     </>
   )
 }

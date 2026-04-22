@@ -38,9 +38,14 @@ const config: Config = {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-8px)' },
         },
+        rise: {
+          '0%': { opacity: '0', transform: 'translateY(12px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         float: 'float 6s ease-in-out infinite',
+        rise: 'rise 0.8s cubic-bezier(0.25,0.1,0.25,1) both',
       },
     },
   },

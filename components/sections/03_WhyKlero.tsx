@@ -1,7 +1,5 @@
-'use client'
-
-import { m } from 'framer-motion'
 import { CircleDollarSign, Gavel, BookOpen, Lock } from 'lucide-react'
+import Reveal from '@/components/ui/Reveal'
 
 const BLOCKS = [
   {
@@ -20,7 +18,7 @@ const BLOCKS = [
     icon: BookOpen,
     title: 'Expertise juridique',
     description:
-      'Plus de quinze ans d\'expérience en droit des successions, avec des généalogistes et juristes dédiés à votre dossier.',
+      "Plus de quinze ans d'expérience en droit des successions, avec des généalogistes et juristes dédiés à votre dossier.",
   },
   {
     icon: Lock,
@@ -34,13 +32,7 @@ export default function WhyKlero() {
   return (
     <section id="why" className="bg-surface py-28 md:py-40 border-t border-border">
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl"
-        >
+        <Reveal className="max-w-2xl">
           <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
             Pourquoi Klero
           </span>
@@ -51,19 +43,16 @@ export default function WhyKlero() {
             Quatre engagements concrets qui font de Klero un partenaire de
             confiance pour les successions complexes.
           </p>
-        </m.div>
+        </Reveal>
 
         <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
           {BLOCKS.map((block, i) => {
             const Icon = block.icon
             return (
-              <m.div
+              <Reveal
                 key={block.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ duration: 0.55, delay: i * 0.08 }}
-                className="bg-background rounded-lg p-7 md:p-8 border border-border shadow-soft hover:shadow-soft-lg transition-shadow duration-300"
+                delay={i * 80}
+                className="bg-background rounded-lg p-7 md:p-8 border border-border shadow-soft hover:shadow-soft-lg"
               >
                 <div className="flex items-start gap-5">
                   <div className="flex items-center justify-center w-12 h-12 rounded-md bg-primary/8 text-primary flex-shrink-0">
@@ -78,7 +67,7 @@ export default function WhyKlero() {
                     </p>
                   </div>
                 </div>
-              </m.div>
+              </Reveal>
             )
           })}
         </div>

@@ -1,20 +1,11 @@
-'use client'
-
-import { m } from 'framer-motion'
 import { ArrowRight, ShieldCheck } from 'lucide-react'
+import Reveal from '@/components/ui/Reveal'
 
 export default function FinalCta() {
   return (
     <section id="contact" className="bg-background py-28 md:py-40 border-t border-border">
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
-        <m.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7 }}
-          className="relative overflow-hidden rounded-xl bg-primary text-secondary px-6 py-14 md:px-14 md:py-20"
-        >
-          {/* Subtle texture */}
+        <Reveal className="relative overflow-hidden rounded-xl bg-primary text-secondary px-6 py-14 md:px-14 md:py-20">
           <div
             aria-hidden="true"
             className="absolute inset-0 opacity-[0.12] pointer-events-none"
@@ -59,7 +50,7 @@ export default function FinalCta() {
               </a>
             </div>
           </div>
-        </m.div>
+        </Reveal>
       </div>
     </section>
   )

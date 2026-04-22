@@ -1,7 +1,5 @@
-'use client'
-
-import { m } from 'framer-motion'
 import { Search, FileSearch, HandCoins } from 'lucide-react'
+import Reveal from '@/components/ui/Reveal'
 
 const STEPS = [
   {
@@ -31,13 +29,7 @@ export default function Process() {
   return (
     <section id="process" className="bg-background py-28 md:py-40 border-t border-border">
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl"
-        >
+        <Reveal className="max-w-2xl">
           <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
             Notre méthode
           </span>
@@ -48,23 +40,16 @@ export default function Process() {
             Un processus rigoureux, transparent et encadré, du premier contact
             jusqu'à la restitution des actifs.
           </p>
-        </m.div>
+        </Reveal>
 
         <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
           {STEPS.map((step, i) => {
             const Icon = step.icon
             return (
-              <m.div
+              <Reveal
                 key={step.number}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{
-                  duration: 0.6,
-                  delay: i * 0.1,
-                  ease: [0.25, 0.1, 0.25, 1],
-                }}
-                className="group relative bg-surface rounded-lg p-7 md:p-8 border border-border hover:border-accent/50 hover:shadow-soft transition-all duration-300"
+                delay={i * 100}
+                className="group relative bg-surface rounded-lg p-7 md:p-8 border border-border hover:border-accent/50 hover:shadow-soft"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex items-center justify-center w-12 h-12 rounded-md bg-primary text-secondary">
@@ -81,7 +66,7 @@ export default function Process() {
                 <p className="mt-3 text-[15px] leading-relaxed text-muted">
                   {step.description}
                 </p>
-              </m.div>
+              </Reveal>
             )
           })}
         </div>

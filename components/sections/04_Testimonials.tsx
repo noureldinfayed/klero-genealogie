@@ -1,7 +1,5 @@
-'use client'
-
-import { m } from 'framer-motion'
 import { Quote } from 'lucide-react'
+import Reveal from '@/components/ui/Reveal'
 
 const TESTIMONIALS = [
   {
@@ -28,29 +26,21 @@ export default function Testimonials() {
   return (
     <section id="testimonials" className="bg-background py-28 md:py-40 border-t border-border">
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl"
-        >
+        <Reveal className="max-w-2xl">
           <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
             Témoignages
           </span>
           <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight leading-tight">
             Ce que disent les héritiers que nous accompagnons
           </h2>
-        </m.div>
+        </Reveal>
 
         <div className="mt-16 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
           {TESTIMONIALS.map((t, i) => (
-            <m.figure
+            <Reveal
               key={t.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.55, delay: i * 0.1 }}
+              delay={i * 100}
+              as="figure"
               className="relative bg-surface rounded-lg p-7 md:p-8 border border-border shadow-soft flex flex-col"
             >
               <Quote
@@ -67,7 +57,7 @@ export default function Testimonials() {
                 </div>
                 <div className="text-xs text-muted mt-0.5">{t.location}</div>
               </figcaption>
-            </m.figure>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-import { m, AnimatePresence } from 'framer-motion'
+import { useState, useRef, useEffect } from 'react'
 import { Plus } from 'lucide-react'
+import Reveal from '@/components/ui/Reveal'
+import { cn } from '@/lib/utils'
 
 const FAQS = [
   {
@@ -27,6 +28,59 @@ const FAQS = [
   },
 ]
 
+function FaqItem({
+  question,
+  answer,
+  isOpen,
+  onToggle,
+}: {
+  question: string
+  answer: string
+  isOpen: boolean
+  onToggle: () => void
+}) {
+  const panelRef = useRef<HTMLDivElement>(null)
+  const [height, setHeight] = useState<number>(0)
+
+  useEffect(() => {
+    if (panelRef.current) setHeight(panelRef.current.scrollHeight)
+  }, [isOpen, answer])
+
+  return (
+    <li>
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={isOpen}
+        className="w-full flex items-start justify-between gap-4 py-5 text-left group"
+      >
+        <span className="text-[16px] md:text-[17px] font-semibold text-foreground pr-4 group-hover:text-primary transition-colors">
+          {question}
+        </span>
+        <span
+          className={cn(
+            'flex items-center justify-center w-8 h-8 rounded-md border border-border text-primary flex-shrink-0 mt-0.5 transition-transform duration-300',
+            isOpen && 'rotate-45'
+          )}
+        >
+          <Plus size={16} strokeWidth={2} />
+        </span>
+      </button>
+      <div
+        style={{ maxHeight: isOpen ? height : 0 }}
+        className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
+        aria-hidden={!isOpen}
+      >
+        <div ref={panelRef}>
+          <p className="pb-6 pr-12 text-[15px] leading-relaxed text-muted">
+            {answer}
+          </p>
+        </div>
+      </div>
+    </li>
+  )
+}
+
 export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
@@ -34,13 +88,7 @@ export default function Faq() {
     <section id="faq" className="bg-surface py-28 md:py-40 border-t border-border">
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-          <m.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5"
-          >
+          <Reveal className="lg:col-span-5">
             <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
               Vos questions
             </span>
@@ -57,50 +105,19 @@ export default function Faq() {
             >
               Une autre question&nbsp;? Écrivez-nous →
             </a>
-          </m.div>
+          </Reveal>
 
           <div className="lg:col-span-7">
             <ul className="divide-y divide-border border-y border-border">
-              {FAQS.map((faq, i) => {
-                const isOpen = openIndex === i
-                return (
-                  <li key={faq.question}>
-                    <button
-                      type="button"
-                      onClick={() => setOpenIndex(isOpen ? null : i)}
-                      aria-expanded={isOpen}
-                      className="w-full flex items-start justify-between gap-4 py-5 text-left group"
-                    >
-                      <span className="text-[16px] md:text-[17px] font-semibold text-foreground pr-4 group-hover:text-primary transition-colors">
-                        {faq.question}
-                      </span>
-                      <m.span
-                        animate={{ rotate: isOpen ? 45 : 0 }}
-                        transition={{ duration: 0.25 }}
-                        className="flex items-center justify-center w-8 h-8 rounded-md border border-border text-primary flex-shrink-0 mt-0.5"
-                      >
-                        <Plus size={16} strokeWidth={2} />
-                      </m.span>
-                    </button>
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <m.div
-                          key="content"
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: 'easeInOut' }}
-                          className="overflow-hidden"
-                        >
-                          <p className="pb-6 pr-12 text-[15px] leading-relaxed text-muted">
-                            {faq.answer}
-                          </p>
-                        </m.div>
-                      )}
-                    </AnimatePresence>
-                  </li>
-                )
-              })}
+              {FAQS.map((faq, i) => (
+                <FaqItem
+                  key={faq.question}
+                  question={faq.question}
+                  answer={faq.answer}
+                  isOpen={openIndex === i}
+                  onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+                />
+              ))}
             </ul>
           </div>
         </div>
