@@ -1,16 +1,9 @@
 @import "tailwindcss";
 @config "../tailwind.config.ts";
 
-/* ============================================================
-   CSS RESET
-   ============================================================ */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* Tailwind's preflight already handles box-sizing and margin resets.
+   The previous `* { margin: 0; padding: 0 }` override beat utility classes
+   like mx-auto and px-* — removed. */
 
 /* ============================================================
    KLERO DESIGN TOKENS
