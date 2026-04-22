@@ -18,8 +18,8 @@ export default function Logo({ className, variant = 'dark' }: LogoProps) {
       aria-label="Klero Généalogie"
       style={{
         backgroundColor: color,
-        WebkitMaskImage: 'url(/images/ui/klero-logo-tight.png)',
-        maskImage: 'url(/images/ui/klero-logo-tight.png)',
+        WebkitMaskImage: 'url(/images/ui/klero-logo.svg)',
+        maskImage: 'url(/images/ui/klero-logo.svg)',
         WebkitMaskRepeat: 'no-repeat',
         maskRepeat: 'no-repeat',
         WebkitMaskPosition: 'left center',
