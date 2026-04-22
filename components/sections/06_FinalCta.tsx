@@ -6,7 +6,7 @@ import { ArrowRight, ShieldCheck } from 'lucide-react'
 export default function FinalCta() {
   return (
     <section id="contact" className="bg-background py-20 md:py-28 border-t border-border">
-      <div className="max-w-container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
+      <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

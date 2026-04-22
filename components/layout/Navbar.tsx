@@ -46,7 +46,7 @@ export default function Navbar() {
             : 'bg-background/80 backdrop-blur-sm'
         )}
       >
-        <div className="max-w-container mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
+        <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
           <div className="flex items-center justify-between h-20">
             <a
               href="#top"
