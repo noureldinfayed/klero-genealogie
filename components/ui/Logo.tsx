@@ -13,13 +13,13 @@ export default function Logo({ className, variant = 'dark' }: LogoProps) {
 
   return (
     <span
-      className={cn('inline-block h-[68px] w-[200px] md:h-[78px] md:w-[240px]', className)}
+      className={cn('inline-block h-[60px] w-[200px] md:h-[68px] md:w-[230px]', className)}
       role="img"
       aria-label="Klero Généalogie"
       style={{
         backgroundColor: color,
-        WebkitMaskImage: 'url(/images/ui/klero-logo.png)',
-        maskImage: 'url(/images/ui/klero-logo.png)',
+        WebkitMaskImage: 'url(/images/ui/klero-logo-tight.png)',
+        maskImage: 'url(/images/ui/klero-logo-tight.png)',
         WebkitMaskRepeat: 'no-repeat',
         maskRepeat: 'no-repeat',
         WebkitMaskPosition: 'left center',
