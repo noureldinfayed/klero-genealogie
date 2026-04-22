@@ -35,7 +35,7 @@ export default function Hero() {
         className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-transparent"
       />
 
-      <div className="relative w-full max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32 pt-40 md:pt-44 pb-28 md:pb-40">
+      <div className="relative w-full max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32 pt-44 md:pt-52 pb-28 md:pb-40">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
