@@ -47,7 +47,7 @@ export default function Navbar() {
         )}
       >
         <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
-          <div className="flex items-center justify-between h-24 md:h-28">
+          <div className="flex items-center justify-between h-20 md:h-24">
             <a
               href="#top"
               className="flex-shrink-0"
