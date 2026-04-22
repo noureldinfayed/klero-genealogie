@@ -13,7 +13,7 @@ export default function Logo({ className, variant = 'dark' }: LogoProps) {
 
   return (
     <span
-      className={cn('inline-block h-10 w-[150px] md:h-11 md:w-[165px]', className)}
+      className={cn('inline-block h-14 w-[210px] md:h-16 md:w-[240px]', className)}
       role="img"
       aria-label="Klero Généalogie"
       style={{
