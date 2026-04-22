@@ -24,7 +24,7 @@ const config: Config = {
         body: ['var(--font-body)', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
-        container: '1120px',
+        container: '1800px',
       },
       boxShadow: {
         soft: '0 1px 2px rgba(11, 45, 85, 0.04), 0 8px 24px rgba(11, 45, 85, 0.06)',

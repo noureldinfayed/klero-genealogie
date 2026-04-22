@@ -14,7 +14,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden bg-primary text-secondary"
+      className="relative overflow-hidden bg-primary text-secondary min-h-[92vh] flex items-center"
     >
       {/* Subtle network / star background */}
       <div
@@ -39,7 +39,7 @@ export default function Hero() {
         <rect width="100%" height="100%" fill="url(#net)" />
       </svg>
 
-      <div className="relative max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32 pt-36 md:pt-44 pb-20 md:pb-28">
+      <div className="relative w-full max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32 pt-40 md:pt-44 pb-28 md:pb-40">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           {/* Text column */}
           <motion.div
@@ -58,7 +58,7 @@ export default function Hero() {
               Cabinet de généalogie successorale
             </motion.span>
 
-            <h1 className="mt-7 text-4xl md:text-5xl lg:text-[56px] font-semibold leading-[1.08] tracking-tight text-secondary">
+            <h1 className="mt-7 text-4xl md:text-5xl lg:text-6xl xl:text-[72px] font-semibold leading-[1.05] tracking-tight text-secondary">
               Retrouver un{' '}
               <span className="italic font-normal text-secondary/95">
                 héritage oublié
@@ -66,7 +66,7 @@ export default function Hero() {
               .
             </h1>
 
-            <p className="mt-6 text-base md:text-lg leading-relaxed text-secondary/75 max-w-xl">
+            <p className="mt-7 text-base md:text-lg lg:text-xl leading-relaxed text-secondary/75 max-w-2xl">
               Nous identifions et récupérons les actifs non transmis lors des
               successions, en collaboration avec les notaires.
             </p>

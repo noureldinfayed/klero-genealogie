@@ -31,7 +31,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section id="faq" className="bg-surface py-20 md:py-28 border-t border-border">
+    <section id="faq" className="bg-surface py-28 md:py-40 border-t border-border">
       <div className="max-w-container mx-auto px-5 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
           <motion.div
@@ -44,7 +44,7 @@ export default function Faq() {
             <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
               Vos questions
             </span>
-            <h2 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground tracking-tight leading-tight">
+            <h2 className="mt-3 text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground tracking-tight leading-tight">
               Questions fréquentes
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted max-w-md">
